@@ -8,7 +8,7 @@ This repository implements the **A**daptive **S**ampling with **Ap**proximate ex
 
 Clone the repository:
 ```
-git clone git@github.com:ebmoon/transformers-GAD.git
+git clone https://github.com/ebmoon/transformers-GAD.git
 ```
 Create a new Conda environment using the provided requirements file. Replace `<env>` with the actual name of your environment:
 ```
