@@ -133,14 +133,13 @@ Running scripts in `scripts/plot` will generate plots from collected data.
 ## Citation
 
 ```
-@misc{gad2024,
-      title={Grammar-Aligned Decoding}, 
-      author={Kanghee Park and Jiayu Wang and Taylor Berg-Kirkpatrick and Nadia Polikarpova and Loris D'Antoni},
-      year={2024},
-      eprint={2405.21047},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2405.21047}, 
+@inproceedings{
+    park2024grammaraligned,
+    title={Grammar-Aligned Decoding},
+    author={Kanghee Park and Jiayu Wang and Taylor Berg-Kirkpatrick and Nadia Polikarpova and Loris D'Antoni},
+    booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems},
+    year={2024},
+    url={https://openreview.net/forum?id=5G7ve8E1Lu}
 }
 ```
 
