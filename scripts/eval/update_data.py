@@ -24,14 +24,16 @@ def add_decoded_to_jsonl(input_path: str, output_path: str, model_id: str, cache
 
             # Decode a single sequence -> plain string
             decoded = tokenizer.batch_decode(tokens, skip_special_tokens=True)
+            dec_str = "".join(" " if t == "" else t for t in decoded)
 
             obj["decoded_generation"] = decoded
+            obj["decoded_str"] = dec_str
             fout.write(json.dumps(obj, ensure_ascii=False) + "\n")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Add decoded_generation to an existing JSONL of samples.")
-    parser.add_argument("--input", default="eval/results/BV4/find_inv_eq_bvlshr0_4bit_gad.jsonl", help="Path to existing *.jsonl (e.g., results/SLIA/<id>/<id>_gad.jsonl)")
-    parser.add_argument("--output", defaults="eval/results/BV4/updated_find_inv_eq_bvlshr0_4bit_gad.jsonl", help="Path to write new *.jsonl with decoded_generation added")
+    parser.add_argument("--input", default="scripts/eval/results/BV4/find_inv_eq_bvlshr0_4bit_gad.jsonl", help="Path to existing *.jsonl (e.g., results/SLIA/<id>/<id>_gad.jsonl)")
+    parser.add_argument("--output", default="scripts/eval/results/BV4/updated_find_inv_eq_bvlshr0_4bit_gad.jsonl", help="Path to write new *.jsonl with decoded_generation added")
     parser.add_argument("--model-id", default="mistralai/mistral-7b-instruct-v0.2", help="HF model ID for tokenizer")
     parser.add_argument("--cache-dir", default="/content/hf_cache", help="Optional HuggingFace cache dir (e.g., /content/hf_cache)")
     args = parser.parse_args()
