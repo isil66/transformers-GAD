@@ -17,7 +17,7 @@ from transformers_gad.generation.logits_process import GrammarAlignedOracleLogit
 
 # ---------------- your config ----------------
 DATASET = "ebmoon/GAD-dataset"
-SPLIT = "BV4"   # or SLIA / CP
+SPLIT = "SLIA"   # or SLIA / CP
 NUM_ITER = 100
 MODEL_ID = "mistralai/mistral-7b-instruct-v0.2"
 TRIE_PATH = f"tries/{SPLIT}"
@@ -65,8 +65,9 @@ def eval_prob(model, tokenizer, id, prompt, grammar_str):
 
             input_length = 1 if model.config.is_encoder_decoder else input_ids.shape[1]
             generated_tokens = output.sequences[0, input_length:].tolist()
+            decoded_generation = tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)
             raw_likelihood = gad_oracle_processor.oracle_trie.raw_likelihood(generated_tokens)
-            history.append({"tokens": generated_tokens, "raw_likelihood": raw_likelihood})
+            history.append({"tokens": generated_tokens, "raw_likelihood": raw_likelihood, "decoded_generation": decoded_generation})
             gad_oracle_processor.reset()
 
     make_dir(f"{RESULT_PATH}/{id}")
