@@ -17,6 +17,7 @@ def get_mapping(tokenizer, unicode=False):
             or "pretrainedtokenizer" in tokenizer.__class__.__name__.lower()
             or "codegen" in tokenizer.__class__.__name__.lower()
             or "gptneox" in tokenizer.__class__.__name__.lower()
+            or "qwen" in tokenizer.__class__.__name__.lower()
         ):
             return BBPEMapping(tokenizer)
         elif "t5" in tokenizer.__class__.__name__.lower():

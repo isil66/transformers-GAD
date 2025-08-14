@@ -6,7 +6,7 @@ from transformers_gad.grammar_utils import IncrementalGrammarConstraint
 from transformers_gad.generation.logits_process import GrammarAlignedOracleLogitsProcessor
 
 NUM_ITER = 10
-MODEL_ID = "TinyLlama/TinyLlama_v1.1"
+MODEL_ID = "Qwen/Qwen3-4B"
 GRAMMAR_PATH = "examples/test/binary_len_5_0.ebnf"
 TRIE_PATH = "tries/binary_len_5_0_trie.json"
 DEVICE = "cpu"
@@ -43,7 +43,7 @@ logits_processors = LogitsProcessorList([
 ])
 
 # Tokenize prompt into ids
-prompt = "Generate a binary string of length 5"
+prompt = "Generate a sequence of 5 binary digits following the format: either exactly 00000, or a 1 followed by any 4 binary digits. Provide just the result:"
 input_ids = tokenizer(
     [prompt], add_special_tokens=False, return_tensors="pt", padding=True
 )["input_ids"]
