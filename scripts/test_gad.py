@@ -5,7 +5,7 @@ from transformers.generation.logits_process import LogitsProcessorList, InfNanRe
 from transformers_gad.grammar_utils import IncrementalGrammarConstraint
 from transformers_gad.generation.logits_process import GrammarAlignedOracleLogitsProcessor
 
-NUM_ITER = 10
+NUM_ITER = 1000
 MODEL_ID = "Qwen/Qwen3-4B"
 GRAMMAR_PATH = "examples/test/binary_len_5_0.ebnf"
 TRIE_PATH = "tries/binary_len_5_0_trie.json"
